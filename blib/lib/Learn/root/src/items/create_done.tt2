@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+[% META title = 'Tarefa Criada' -%]
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<p>Tarefa [% item.id %] => [% item.nome %] foi criada com sucesso!
+</p>
+
+[% # Provide a link back to the list page. 'c.uri_for' builds -%] [% # a full URI; e.g., 'http://localhost:3000/items/list' -%]
+<p><a href="[% c.uri_for('/items/list') %]">Return to list</a></p>
+
+[% # Try out the TT Dumper (for development only!) -%]
+<pre>
+[% # Dump of the 'book' variable: -%]
+[% #Dumper.dump(item) -%]
+</pre>
+
+</html>

@@ -1,0 +1,35 @@
+<head>
+  <meta charset="UTF-8">
+</head>
+
+ [% META title = 'Login' %]
+
+<!-- Login form -->
+<form method="post" action="[% c.uri_for('/login') %]">
+  <table>
+    <tr>
+      <td>Nome de usuário:</td>
+      <td><input type="text" name="username" size="40" /></td>
+    </tr>
+    <tr>
+      <td>Senha:</td>
+      <td><input type="password" name="password" size="40" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="submit" value="enviar" /></td>
+    </tr>
+  </table>
+</form>
+
+
+<p>
+  [% # This code illustrates how certain parts of the TT # template will only be shown to users who have logged in %]
+  [% IF c.user_exists %]
+   Você já está logado como '[% c.user.username %]'.
+   Você pode <a href="[% c.uri_for('/logout') %]">deslogar</a>  aqui.
+   [% ELSE %]
+   Você precisa logar para usar essa aplicação.
+    [% END %]
+    [%# Note that this whole block is a comment because the "#" appears immediate after the "[%" (with no spaces in between).
+    Although it can be a handy way to temporarily "comment out" a whole block of TT code, it's probably a little too subtle for use in "normal" comments. %]
+</p>

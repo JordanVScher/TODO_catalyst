@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" [%#
+    %]"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+[% META title = 'Não há tarefas' -%]
+<br><br>
+<h3> Você não tem nenhuma tarefa :)</h3>
+<br><br>
+
+<h3>   <a href="[%
+  c.uri_for(c.controller.action_for('list')) %]">Listar Tudo</a>
+
+    &nbsp&nbsp&nbsp&nbsp
+    <a href="[%
+    c.uri_for(c.controller.action_for('lista_parcial'), 'Fazendo!') %]">Listar o que falta fazer</a>
+    &nbsp&nbsp&nbsp&nbsp
+    <a href="[%
+    c.uri_for(c.controller.action_for('lista_parcial'), 'Feito!') %]">Listar o que foi feito</a>
+</h3>
+
+
+<table cellpadding="5">
+
+  <td>
+    <h2>Adicionar tarefa</h2>
+
+    <form method="post" action="[% c.uri_for('form_create_do') %]">
+      <table>
+        <tr>
+          <td>Nome</td>
+          <td><input type="text" name="nome" autocomplete="off"></td>
+        </tr>
+        <tr>
+
+        </tr>
+      </table>
+      <input type="submit" name="Submit" value="Criar">
+    </form>
+  </td>
+
+
+  <td>
+    <h2>Deletar Tudo!</h2>
+
+    <form method="post">
+      <table>
+        <tr>
+          <h3><pre> Por sua conta e risco!</pre></h3>
+        </tr>
+        <tr>
+
+        </tr>
+      </table>
+      <input type="submit" name="Submit" value="Deletar">
+    </form>
+  </td>
+
+
+
+
+</table>
+
+</html>

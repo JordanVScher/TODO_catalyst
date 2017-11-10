@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" [%#
+    %]"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+[% # This is a TT comment. -%] [%- # Provide a title -%] [% META title = 'Lista Tarefas' -%] [% # Note That the '-' at the beginning or end of TT code -%] [% # chomps the whitespacenewline at that end of the -%] [% # Some basic HTML with a loop to display
+books -%]
+
+<table cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Data</th>
+    <th>Status</th>
+    <th>Encerrar</th>
+    <th>Deletar</th>
+  </tr>
+  [% # Display each items in a table row %] [% FOREACH item IN items -%]
+  <tr>
+    <td>[% item.id %]</td>
+    <td>[% item.nome %]</td>
+    <td>[% item.data %]</td>
+    <td>[% item.status %]</td>
+    <td> <a href="[%
+        c.uri_for(c.controller.action_for('encerra'), [item.id]) %]">Encerrar</a>
+    </td>
+
+    <td> <a href="[%
+        c.uri_for(c.controller.action_for('delete'), [item.id]) %]">Deletar</a>
+    </td>
+
+  </tr>
+  [% END -%]
+</table>
+<br><br>
+
+<h3>   <a href="[%
+  c.uri_for(c.controller.action_for('list')) %]">Listar Tudo</a>
+
+    &nbsp&nbsp&nbsp&nbsp
+    <a href="[%
+    c.uri_for(c.controller.action_for('lista_parcial'), 'Fazendo!') %]">Listar o que falta fazer</a>
+    &nbsp&nbsp&nbsp&nbsp
+    <a href="[%
+    c.uri_for(c.controller.action_for('lista_parcial'), 'Feito!') %]">Listar o que foi feito</a>
+</h3>
+
+<table cellpadding="5">
+
+
+  <td>
+    <h2>Adicionar tarefa</h2>
+
+    <form method="post" action="[% c.uri_for('form_create_do') %]">
+      <table>
+        <tr>
+          <td>Nome</td>
+          <td><input type="text" name="nome" autocomplete="off"></td>
+        </tr>
+        <tr>
+
+        </tr>
+      </table>
+      <input type="submit" name="Submit" value="Criar">
+    </form>
+  </td>
+
+
+  <td>
+    <h2>Deletar Tudo!</h2>
+
+    <form method="post" action="[% c.uri_for('delete_all') %]">
+      <table>
+        <tr>
+          <h3><pre> Por sua conta e risco!</pre></h3>
+        </tr>
+        <tr>
+
+        </tr>
+      </table>
+      <input type="submit" name="Submit" value="Deletar">
+    </form>
+  </td>
+
+
+</table>
+
+<pre><h4>Você tem [% count1 %] tarefas no total
+Pra terminar : [% count2 %]
+Finalizadas : [% count3 %]</h4></pre>
+
+
+
+</html>
