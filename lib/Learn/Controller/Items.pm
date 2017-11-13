@@ -289,18 +289,18 @@ sub exporta : Chained('base') : PathPart('exporta') : Args(0) {
     open( my $output, '>:encoding(UTF-8)', 'tarefas.csv' ) || die "Impossível criar utput.csv";
 
     my @result = $c->model('DB::Item')->search( {}, { order_by => ['me.id'] } )->all;
+    my @nomes = map ucfirst, $c->model('DB')->source('Item')->columns;
 
-    my @dados = ( "Id", "Nome", "Data", "Status" );
-    $row = $csv->combine(@dados);
+    $row = $csv->combine(@nomes);
     $row = $csv->string();
 
     print $output $row;
 
     foreach my $item (@result) {
 
-        @dados = ( $item->id, $item->nome, $item->data, $item->status );
+        @nomes = ( $item->id, $item->nome, $item->data, $item->status );
 
-        $row = $csv->combine(@dados);
+        $row = $csv->combine(@nomes);
         $row = $csv->string();
         print $output $row;
 
